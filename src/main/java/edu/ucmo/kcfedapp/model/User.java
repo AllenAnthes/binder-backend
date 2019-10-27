@@ -35,6 +35,7 @@ public class User {
     @JoinTable(name = "users_liked_businesses")
     private Set<Business> likedBusinesses = new HashSet<>();
 
+    @Lob
     private String imageUrl;
 
     public User() {

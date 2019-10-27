@@ -2,8 +2,8 @@ spring:
   datasource.url: ${CLEARDB_DATABASE_URL:jdbc:h2:file:./devdb}
   security.oauth2.resourceserver.jwt.issuer-uri: https://ucmo.auth0.com/
   jpa:
-    #    hibernate.ddl-auto: ${DDL_AUTO:create-drop}
-    hibernate.ddl-auto: update
+        hibernate.ddl-auto: ${DDL_AUTO:create-drop}
+#    hibernate.ddl-auto: update
     show-sql: true
 
 
