@@ -79,6 +79,11 @@ public class BusinessController {
         return businessRepo
                 .findByUser(user)
                 .orElseGet(() ->
-                        new Business(user));
+                        createBusinessForUser(user));
+    }
+
+    private Business createBusinessForUser(User user) {
+        Business business = new Business(user);
+        return businessRepo.save(business);
     }
 }
