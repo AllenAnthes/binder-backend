@@ -72,10 +72,11 @@ public class UserController {
     }
 
     @PostMapping("/likeBusiness")
-    public User likeBusiness(@RequestBody Business business, Principal principal) {
+    public Business likeBusiness(@RequestBody Business business, Principal principal) {
         User currentUser = getUserFromPrincipal(principal);
         currentUser.addLikedBusiness(business);
-        return userRepo.saveAndFlush(currentUser);
+        userRepo.saveAndFlush(currentUser);
+        return business;
     }
 
 
