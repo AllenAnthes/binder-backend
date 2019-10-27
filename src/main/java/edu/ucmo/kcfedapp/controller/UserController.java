@@ -32,12 +32,12 @@ public class UserController {
 
     @GetMapping
     public List<User> getUsers() {
-        List<User> allUser = userRepo.findAll();
+        List<User> allUser = userRepo.findAll().stream()
+                .filter(isNotEmpty)
+                .collect(Collectors.toList());
         logger.info("Returning all public messages: {}", allUser);
         return allUser;
     }
-
-    private Predicate<User> isNotEmpty = user -> !user.getName().isEmpty();
 
 
     @GetMapping("/bySkillset")
@@ -135,6 +135,8 @@ public class UserController {
         newUser.setVerifiedUser(authedName);
         return userRepo.save(newUser);
     }
+
+    private Predicate<User> isNotEmpty = user -> !user.getName().isEmpty();
 
 
 }

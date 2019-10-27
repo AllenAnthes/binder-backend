@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api/business")
@@ -26,7 +27,10 @@ public class BusinessController {
 
     @GetMapping
     public List<Business> getAllBusinesses() {
-        return businessRepo.findAll();
+        return businessRepo.findAll()
+                .stream()
+                .filter(business -> !business.getPitch().isEmpty())
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/mine")
