@@ -1,15 +1,16 @@
 package edu.ucmo.kcfedapp.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "businesses")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Business {
 
     @Id
@@ -33,11 +34,13 @@ public class Business {
     @JoinTable(name = "businesses_likes_users",
             joinColumns = {@JoinColumn(name = "business_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    @JsonIgnoreProperties({"business", "likedBusinesses"})
     private Set<User> likedUsers = new HashSet<>();
 
     private String logoUrl = "";
 
     @OneToOne
+    @JsonIgnoreProperties({"business", "likedBusinesses"})
     private User user;
 
     public Business() {

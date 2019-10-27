@@ -1,5 +1,6 @@
 spring:
-  datasource.url: ${CLEARDB_DATABASE_URL:jdbc:h2:file:./devdb}
+  #  datasource.url: ${CLEARDB_DATABASE_URL:jdbc:h2:file:./devdb}
+  datasource.url: jdbc:mysql://b616bff48be9b4:d5ad5a3d@us-cdbr-iron-east-05.cleardb.net/heroku_b03f23939ec5f3e?reconnect=true
   security.oauth2.resourceserver.jwt.issuer-uri: https://ucmo.auth0.com/
   jpa:
     hibernate.ddl-auto: ${DDL_AUTO:update}
