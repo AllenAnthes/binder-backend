@@ -1,8 +1,6 @@
 package edu.ucmo.kcfedapp.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,7 +8,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User {
 
     @Id
@@ -32,10 +29,6 @@ public class User {
     private Byte[] resume;
 
     private HashSet<String> skillsets = new HashSet<>();
-
-//    @OneToOne
-//    @JsonIgnoreProperties({"likedUsers", "user"})
-//    private Business business;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_liked_businesses")
@@ -103,14 +96,6 @@ public class User {
     public void setVerifiedUser(String verifiedUser) {
         this.verifiedUser = verifiedUser;
     }
-
-//    public Business getBusiness() {
-//        return business;
-//    }
-//
-//    public void setBusiness(Business business) {
-//        this.business = business;
-//    }
 
     public Set<Business> getLikedBusinesses() {
         return likedBusinesses;
