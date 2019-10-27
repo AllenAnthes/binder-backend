@@ -7,6 +7,7 @@ spring:
     show-sql: true
 
 
+
 auth0.audience: ${AUTH0_AUDIENCE:kcfed-2019}
 
 allowedOrigin: ${ALLOWED_ORIGIN:http://localhost:3000}
