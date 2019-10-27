@@ -53,10 +53,11 @@ public class BusinessController {
     }
 
     @PostMapping("/likeUser")
-    public Business likeUser(@RequestBody User user, Principal principal) {
+    public User likeUser(@RequestBody User user, Principal principal) {
         Business business = getBusinessForPrincipal(principal);
         business.addLikedUser(user);
-        return businessRepo.save(business);
+        businessRepo.save(business);
+        return user;
     }
 
     private User getUserFromPrincipal(Principal principal) {

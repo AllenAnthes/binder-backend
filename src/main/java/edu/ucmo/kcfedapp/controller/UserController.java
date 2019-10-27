@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @RestController
@@ -36,12 +37,16 @@ public class UserController {
         return allUser;
     }
 
+    private Predicate<User> isNotEmpty = user -> !user.getName().isEmpty();
+
+
     @GetMapping("/bySkillset")
     public List<User> getUsersBySkillset(@Param("skillset") String skillset) {
         // this is a hack
         List<User> users = userRepo.findAll();
         List<User> matchingUsers = users.stream()
                 .filter(user -> user.getSkillsets().contains(skillset))
+                .filter(isNotEmpty)
                 .collect(Collectors.toList());
 
         logger.info("Returning all public messages: {}", matchingUsers);
@@ -128,7 +133,6 @@ public class UserController {
         User newUser = new User();
         newUser.setVerifiedUser(authedName);
         return userRepo.save(newUser);
-
     }
 
 

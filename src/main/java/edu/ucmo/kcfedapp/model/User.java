@@ -33,9 +33,9 @@ public class User {
 
     private HashSet<String> skillsets = new HashSet<>();
 
-    @OneToOne
-    @JsonIgnoreProperties({"likedUsers", "user"})
-    private Business business;
+//    @OneToOne
+//    @JsonIgnoreProperties({"likedUsers", "user"})
+//    private Business business;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_liked_businesses")
@@ -104,13 +104,13 @@ public class User {
         this.verifiedUser = verifiedUser;
     }
 
-    public Business getBusiness() {
-        return business;
-    }
-
-    public void setBusiness(Business business) {
-        this.business = business;
-    }
+//    public Business getBusiness() {
+//        return business;
+//    }
+//
+//    public void setBusiness(Business business) {
+//        this.business = business;
+//    }
 
     public Set<Business> getLikedBusinesses() {
         return likedBusinesses;
