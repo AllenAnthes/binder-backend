@@ -71,7 +71,6 @@ public class UserController {
         User currentUser = getUserFromPrincipal(principal);
         currentUser.addLikedBusiness(business);
         return userRepo.saveAndFlush(currentUser);
-//        return userRepo.save(currentUser);
     }
 
 

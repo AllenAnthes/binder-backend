@@ -13,12 +13,12 @@ public class User {
     private Long id;
 
     @Column(unique = true)
-    private String verifiedUser;
+    private String verifiedUser = "";
 
-    private String name;
+    private String name = "";
 
     @Lob
-    private String bio;
+    private String bio = "";
 
     @Lob
     private Byte[] image;
@@ -36,7 +36,7 @@ public class User {
     private Set<Business> likedBusinesses = new HashSet<>();
 
     @Lob
-    private String imageUrl;
+    private String imageUrl = "";
 
     public User() {
     }

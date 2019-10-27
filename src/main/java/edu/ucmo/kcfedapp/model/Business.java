@@ -16,15 +16,15 @@ public class Business {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String name = "";
 
     private HashSet<String> skillsets = new HashSet<>();
 
     @Lob
     @Column(name = "CONTENT")
-    private String pitch;
+    private String pitch = "";
 
-    private String category;
+    private String category = "";
 
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
@@ -35,7 +35,7 @@ public class Business {
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private Set<User> likedUsers = new HashSet<>();
 
-    private String logoUrl;
+    private String logoUrl = "";
 
     @OneToOne
     private User user;
