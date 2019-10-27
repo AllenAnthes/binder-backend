@@ -1,0 +1,12 @@
+spring:
+  datasource.url: ${CLEARDB_DATABASE_URL:jdbc:h2:file:./devdb}
+  security.oauth2.resourceserver.jwt.issuer-uri: https://ucmo.auth0.com/
+  jpa:
+    #    hibernate.ddl-auto: ${DDL_AUTO:create-drop}
+    hibernate.ddl-auto: update
+    show-sql: true
+
+
+auth0.audience: ${AUTH0_AUDIENCE:kcfed-2019}
+
+allowedOrigin: ${ALLOWED_ORIGIN:http://localhost:3000}
