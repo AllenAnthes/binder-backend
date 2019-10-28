@@ -14,4 +14,8 @@ challenges then showcase their talents to prospective startup owners. If both
 parties believe that they would be a good match then Binder brings them
 together.
 
+[Youtube Video](https://www.youtube.com/watch?v=xMih9739tog)
+
+[Frontend Repo](https://github.com/AllenAnthes/kcfed2019-frontend/edit/master/README.md)
+
 ![img](./img/2019-10-27%2019.39.02.gif)
